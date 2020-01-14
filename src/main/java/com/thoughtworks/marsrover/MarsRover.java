@@ -1,14 +1,20 @@
 package com.thoughtworks.marsrover;
 
+import java.util.Arrays;
+
 public class MarsRover {
 
-    private final MarsStatus status;
+    private MarsStatus status;
 
     public MarsRover(Integer x, Integer y, String direction) {
         this.status = MarsStatus.from(x, y, direction);
     }
 
-    public MarsStatus execute() {
-        return new MarsStatus(0, 0, "E");
+    public MarsStatus execute(MarsRoverCommand... marsRoverCommands) {
+        Arrays.stream(marsRoverCommands).forEach(marsRoverCommand -> {
+            this.status = marsRoverCommand.execute(status);
+        });
+
+        return status;
     }
 }
