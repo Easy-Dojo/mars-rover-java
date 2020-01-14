@@ -8,15 +8,12 @@ public class MarsRover {
 
     private MarsStatus status;
 
-    public MarsRover(Integer x, Integer y, String direction) {
+    public MarsRover(Integer x, Integer y, Direction direction) {
         this.status = MarsStatus.from(x, y, direction);
     }
 
     public MarsStatus execute(MarsRoverCommand... marsRoverCommands) {
-        Arrays.stream(marsRoverCommands).forEach(marsRoverCommand -> {
-            this.status = marsRoverCommand.execute(status);
-        });
-
+        Arrays.stream(marsRoverCommands).forEach(marsRoverCommand -> this.status = marsRoverCommand.execute(status));
         return status;
     }
 
