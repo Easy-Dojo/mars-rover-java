@@ -17,13 +17,13 @@ public class MarsRover {
         return status;
     }
 
-    public MarsStatus execute(String commandString) {
+    public MarsStatus execute(String commandString) throws InvalidCommandException {
         List<MarsRoverCommand> marsRoverCommands = parseCommand(commandString);
         marsRoverCommands.forEach(marsRoverCommand -> this.status = marsRoverCommand.execute(status));
         return status;
     }
 
-    private List<MarsRoverCommand> parseCommand(String commandString) {
+    private List<MarsRoverCommand> parseCommand(String commandString) throws InvalidCommandException {
         List<MarsRoverCommand> result = new ArrayList<>();
         char[] chars = commandString.toCharArray();
         for (char aChar : chars) {
