@@ -97,11 +97,38 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void should_return_00N_when_execute_given_init_state_00N_command_M() throws InvalidCommandException {
-        MarsRover marsRover = new MarsRover(0, 0, Direction.N);
+    public void should_return_12N_when_execute_given_init_state_11N_command_M() throws InvalidCommandException {
+        MarsRover marsRover = new MarsRover(1, 1, Direction.N);
 
         MarsStatus marsStatus = marsRover.execute("M");
 
-        assertEquals(new MarsStatus(0, 1, Direction.N), marsStatus);
+        assertEquals(new MarsStatus(1, 2, Direction.N), marsStatus);
+    }
+
+    @Test
+    public void should_return_21E_when_execute_given_init_state_11E_command_M() throws InvalidCommandException {
+        MarsRover marsRover = new MarsRover(1, 1, Direction.E);
+
+        MarsStatus marsStatus = marsRover.execute("M");
+
+        assertEquals(new MarsStatus(2, 1, Direction.E), marsStatus);
+    }
+
+    @Test
+    public void should_return_10S_when_execute_given_init_state_11S_command_M() throws InvalidCommandException {
+        MarsRover marsRover = new MarsRover(1, 1, Direction.S);
+
+        MarsStatus marsStatus = marsRover.execute("M");
+
+        assertEquals(new MarsStatus(1, 0, Direction.S), marsStatus);
+    }
+
+    @Test
+    public void should_return_01W_when_execute_given_init_state_11W_command_M() throws InvalidCommandException {
+        MarsRover marsRover = new MarsRover(1, 1, Direction.W);
+
+        MarsStatus marsStatus = marsRover.execute("M");
+
+        assertEquals(new MarsStatus(0, 1, Direction.W), marsStatus);
     }
 }
