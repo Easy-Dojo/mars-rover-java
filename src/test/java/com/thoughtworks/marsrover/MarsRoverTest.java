@@ -87,4 +87,12 @@ public class MarsRoverTest {
         assertEquals(new MarsStatus(0, 0, Direction.S), marsStatus);
     }
 
+    @Test
+    public void should_return_00S_when_execute_given_init_state_00N_command_RR() {
+        MarsRover marsRover = new MarsRover(0, 0, Direction.N);
+
+        MarsStatus marsStatus = marsRover.execute("RR");
+
+        assertEquals(new MarsStatus(0, 0, Direction.S), marsStatus);
+    }
 }
