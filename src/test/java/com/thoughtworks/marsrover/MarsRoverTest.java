@@ -50,4 +50,31 @@ public class MarsRoverTest {
 
         assertEquals(new MarsStatus(0, 0, Direction.W), marsStatus);
     }
+
+    @Test
+    public void should_return_00S_when_execute_given_init_state_00W_command_L() {
+        MarsRover marsRover = new MarsRover(0, 0, Direction.W);
+
+        MarsStatus marsStatus = marsRover.execute("L");
+
+        assertEquals(new MarsStatus(0, 0, Direction.S), marsStatus);
+    }
+
+    @Test
+    public void should_return_00E_when_execute_given_init_state_00S_command_L() {
+        MarsRover marsRover = new MarsRover(0, 0, Direction.S);
+
+        MarsStatus marsStatus = marsRover.execute("L");
+
+        assertEquals(new MarsStatus(0, 0, Direction.E), marsStatus);
+    }
+
+    @Test
+    public void should_return_00N_when_execute_given_init_state_00E_command_L() {
+        MarsRover marsRover = new MarsRover(0, 0, Direction.E);
+
+        MarsStatus marsStatus = marsRover.execute("L");
+
+        assertEquals(new MarsStatus(0, 0, Direction.N), marsStatus);
+    }
 }
