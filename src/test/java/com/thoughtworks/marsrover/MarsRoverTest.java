@@ -131,4 +131,11 @@ public class MarsRoverTest {
 
         assertEquals(new MarsStatus(0, 1, Direction.W), marsStatus);
     }
+
+    @Test(expected = InvalidCommandException.class)
+    public void should_throw_invalid_command_exception_when_command_is_invalid() throws InvalidCommandException {
+        MarsRover marsRover = new MarsRover(1, 1, Direction.W);
+
+        MarsStatus marsStatus = marsRover.execute("MMX");
+    }
 }
